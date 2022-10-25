@@ -10,10 +10,12 @@ int main()
 
     while (i <= n)
     {
+        int count = i;
         int j = 1;
-        while (j <= n)
+        while (j <= i)
         {
-            cout << i << " ";
+            cout << count << " ";
+            count -= 1;
             j += 1;
         }
         cout << endl;

@@ -7,17 +7,16 @@ int main()
     cin >> n;
 
     int i = 1;
-
     while (i <= n)
     {
         int j = 1;
-        while (j <= n)
+        while (j <= (n - i + 1))
         {
-            cout << i << " ";
-            j += 1;
+            cout << "X";
+            j++;
         }
         cout << endl;
-        i += 1;
+        i++;
     }
 
     return 0;
