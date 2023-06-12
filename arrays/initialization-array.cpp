@@ -1,21 +1,21 @@
 #include <iostream>
 using namespace std;
 
-void printArray(int arr[], int size) {
-    for (int i = 0; i < size; i++) {
+void printArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
         cout << arr[i] << " ";
     }
 }
 
-
-
-
 int main()
 {
     int n = 10;
-    int arr[n] = {7}; 
+    int arr[n] = {7};
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         arr[i] = 6;
     }
 
@@ -23,10 +23,7 @@ int main()
     cout << endl;
 
     char ch[7] = {'a', 'b', 'c', 'd'};
-    // printArray(ch, 7); 
-    
-
-
+    // printArray(ch, 7);
 
     return 0;
 }
