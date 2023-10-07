@@ -1,6 +1,116 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void pattern29(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= (n - i); j++)
+        {
+            cout << "  ";
+        }
+
+        for (int j = 1; j <= i; j++)
+        {
+            char ch = 'A' + n - j;
+            cout << ch << " ";
+        }
+        cout << endl;
+    }
+}
+
+void pattern28(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= (n - i); j++)
+        {
+            cout << "  ";
+        }
+
+        for (int j = 1; j <= i; j++)
+        {
+            int count = n - j + 1;
+            cout << count << " ";
+        }
+        cout << endl;
+    }
+}
+
+void pattern27(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= (n - i); j++)
+        {
+            cout << "  ";
+        }
+        char ch = 'A' + i - 1;
+
+        for (int j = 1; j <= i; j++)
+        {
+            cout << ch << " ";
+        }
+        cout << endl;
+    }
+}
+
+void pattern26(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= (n - i); j++)
+        {
+            cout << "  ";
+        }
+
+        for (int j = i; j >= 1; j--)
+        {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+}
+
+void pattern25(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= (n - i); j++)
+        {
+            cout << "  ";
+        }
+
+        // for (int j=1; j<=i; j++){
+        //     char ch = 'A' + j -1;
+        //     cout << ch << " ";
+        // }
+
+        for (char ch = 'A'; ch <= 'A' + i - 1; ch++)
+        {
+            cout << ch << " ";
+        }
+        cout << endl;
+    }
+}
+
+void pattern24(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= (n - i); j++)
+        {
+            cout << "  ";
+        }
+
+        for (int j = 1; j <= i; j++)
+        {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+}
+
 void pattern23(int n)
 {
     for (int i = 1; i <= n; i++)
@@ -307,6 +417,7 @@ void pattern1(int n)
 int main()
 {
     int n;
+    cout << "Enter the number : ";
     cin >> n;
 
     pattern1(n);
@@ -376,6 +487,24 @@ int main()
     cout << endl;
 
     pattern23(n);
+    cout << endl;
+
+    pattern24(n);
+    cout << endl;
+
+    pattern25(n);
+    cout << endl;
+
+    pattern26(n);
+    cout << endl;
+
+    pattern27(n);
+    cout << endl;
+
+    pattern28(n);
+    cout << endl;
+
+    pattern29(n);
     cout << endl;
 
     return 0;
