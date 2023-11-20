@@ -74,6 +74,10 @@ void insertAtPosition(Node *&head, Node *&tail, int position, int d)
 
 void print(Node *&head)
 {
+    if (head == NULL)
+    {
+        cout << "List is empty" << endl;
+    }
     Node *temp = head;
     while (temp != NULL)
     {
@@ -118,6 +122,106 @@ void deleteAtPosition(Node *&head, Node *&tail, int position)
     }
 }
 
+bool isCircular(Node *head)
+{
+    // empty list
+    if (head == NULL)
+    {
+        return true;
+    }
+
+    Node *temp = head->next;
+    while (temp != NULL && temp != head)
+    {
+        temp = temp->next;
+    }
+
+    if (temp == head)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+// detect loop in linked list
+bool detectLoop(Node *head)
+{
+    // empty list
+    if (head == NULL)
+    {
+        return false;
+    }
+
+    map<Node *, bool> visited;
+
+    Node *temp = head;
+
+    while (temp != NULL)
+    {
+        if (visited[temp] == true)
+        {
+            cout << "Loop is present on element " << temp->data << endl;
+            return true;
+        }
+
+        visited[temp] = true;
+        temp = temp->next;
+    }
+
+    return false;
+}
+
+// Flyod Loop Detection Algorithm
+Node *flyodLoopDetection(Node *head)
+{
+    // empty list
+    if (head == NULL)
+    {
+        return head;
+    }
+
+    Node *slow = head;
+    Node *fast = head;
+
+    while (slow != NULL && fast != NULL)
+    {
+        fast = fast->next;
+        if (fast != NULL)
+        {
+            fast = fast->next;
+        }
+        slow = slow->next;
+        if (slow == fast)
+        {
+            cout << "loop present at " << slow->data << endl;
+            return slow;
+        }
+    }
+
+    return NULL;
+}
+
+// finding starting point of loop
+Node *getStartingNode(Node *head)
+{
+    // empty list
+    if (head == NULL)
+    {
+        return NULL;
+    }
+
+    Node *intersection = flyodLoopDetection(head);
+
+    Node *slow = head;
+    while (slow != intersection)
+    {
+        slow = slow->next;
+        intersection = intersection->next;
+    }
+
+    return slow;
+}
 int main()
 {
     // created a new node
@@ -128,46 +232,74 @@ int main()
     // head pointed to node1
     Node *head = node1;
     Node *tail = node1;
-    print(head);
+    // print(head);
 
     insertAtHead(head, 12);
-    print(head);
+    // print(head);
 
     insertAtHead(head, 15);
-    print(head);
+    // print(head);
 
     insertAtTail(tail, 100);
-    print(head);
+    // print(head);
 
     insertAtTail(tail, 700);
-    print(head);
+    // print(head);
 
     insertAtPosition(head, tail, 3, 90);
-    print(head);
+    // print(head);
 
     insertAtPosition(head, tail, 1, 70);
-    print(head);
+    // print(head);
 
     insertAtPosition(head, tail, 7, 200);
-    print(head);
+    // print(head);
 
     cout << "Tail : " << tail->data << endl;
+    tail->next = head->next->next;
 
-    deleteAtPosition(head, tail, 3);
-    print(head);
+    /*
 
-    deleteAtPosition(head, tail, 1);
-    print(head);
 
-    deleteAtPosition(head, tail, 6);
-    print(head);
+        deleteAtPosition(head, tail, 3);
+        print(head);
 
-    cout << "Tail : " << tail->data << endl;
+        deleteAtPosition(head, tail, 1);
+        print(head);
 
-    deleteAtPosition(head, tail, 5);
-    print(head);
+        deleteAtPosition(head, tail, 6);
+        print(head);
 
-    cout << "Tail : " << tail->data << endl;
+        cout << "Tail : " << tail->data << endl;
 
+        deleteAtPosition(head, tail, 5);
+        print(head);
+
+        cout << "Tail : " << tail->data << endl;
+
+    */
+
+    if (flyodLoopDetection(head) != NULL)
+    {
+        cout << "Loop is present" << endl;
+    }
+    else
+    {
+        cout << "Loop is not present" << endl;
+    }
+    /*
+        if (isCircular(head))
+        {
+            cout << "Linked List is Circular" << endl;
+        }
+        else
+        {
+            cout << "Linked List is not Circular" << endl;
+        }
+
+        */
+
+    Node *loop = getStartingNode(head);
+    cout << "Loop is started at  " << loop->data << endl;
     return 0;
 }
