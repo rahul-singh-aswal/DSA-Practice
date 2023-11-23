@@ -222,6 +222,25 @@ Node *getStartingNode(Node *head)
 
     return slow;
 }
+
+// remove loop
+
+void removeLoop(Node *head)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+
+    Node *startOfLoop = getStartingNode(head);
+    Node *temp = startOfLoop;
+    while (temp->next != startOfLoop)
+    {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+}
+
 int main()
 {
     // created a new node
@@ -301,5 +320,8 @@ int main()
 
     Node *loop = getStartingNode(head);
     cout << "Loop is started at  " << loop->data << endl;
+
+    removeLoop(head);
+    print(head);
     return 0;
 }
